@@ -1,0 +1,7 @@
+INTEGRAÇÕES OPCIONAIS — NÃO ATIVAS
+
+Google Analytics 4: inserir o ID G-XXXXXXXXXX depois de criar a propriedade.
+Meta Pixel: inserir o Pixel ID depois de configurar a conta.
+Google Search Console: adicionar a verificação depois que o domínio estiver online.
+
+Nenhum rastreador foi ativado nesta versão.
