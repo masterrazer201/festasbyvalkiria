@@ -1,0 +1,37 @@
+[
+  {
+    "file": "heroes.webp",
+    "title": "Super-heróis",
+    "category": "herois"
+  },
+  {
+    "file": "sonic.webp",
+    "title": "Sonic",
+    "category": "aventura"
+  },
+  {
+    "file": "bela.webp",
+    "title": "Contos & princesas",
+    "category": "princesas"
+  },
+  {
+    "file": "mickey.webp",
+    "title": "Clássicos",
+    "category": "classicos"
+  },
+  {
+    "file": "hot-wheels.webp",
+    "title": "Aventura",
+    "category": "aventura"
+  },
+  {
+    "file": "sereia.webp",
+    "title": "Fundo do mar",
+    "category": "princesas"
+  },
+  {
+    "file": "brinquedos.webp",
+    "title": "Projetos especiais",
+    "category": "classicos"
+  }
+]

@@ -62,3 +62,12 @@ body{padding-bottom:68px}.whatsapp-float{bottom:82px}
 .field select:focus{border-color:#e5a05f;box-shadow:0 0 0 3px rgba(243,154,112,.14)}
 @media(max-width:900px){.about-grid{grid-template-columns:1fr}.possibility-grid{grid-template-columns:1fr 1fr}.testimonial-placeholder{align-items:flex-start;flex-direction:column}}
 @media(max-width:560px){.possibility-grid{grid-template-columns:1fr}.about-image img{height:430px}}
+
+
+/* V5.4 — crescimento, filtros e conversão */
+.portfolio-filters{display:flex;gap:10px;flex-wrap:wrap;margin:-8px 0 24px}
+.filter-btn{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:999px;font-weight:800;font-size:12px;cursor:pointer}
+.filter-btn.active,.filter-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.work-card.is-hidden{display:none}
+.lightbox-cta{display:inline-flex;margin:14px auto 0;background:linear-gradient(110deg,var(--yellow),var(--coral));color:var(--ink);padding:11px 16px;border-radius:999px;font-weight:900;font-size:13px}
+.form-success{margin-top:12px;background:#eefaf1;border:1px solid #b8e6c2;color:#1d6e32;padding:12px 14px;border-radius:14px;font-size:13px;font-weight:800}

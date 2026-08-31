@@ -14,7 +14,7 @@ function clear(input){input.removeAttribute('aria-invalid');const e=input.closes
 function formatDateBR(v){if(!v)return'A definir';const[y,m,d]=v.split('-');return`${d}/${m}/${y}`}
 
 form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('nome'),t=telefone;[n,t].forEach(clear);let ok=true;if(!n.value.trim()){err(n,'Informe seu nome.');ok=false}if(t.value.replace(/\D/g,'').length<10){err(t,'Informe um WhatsApp válido.');ok=false}if(!ok)return;
-const d=formatDateBR(dataInput.value),tipo=document.getElementById('tipo').value||'A definir',tema=document.getElementById('tema').value.trim()||'A definir',cidade=document.getElementById('cidade').value.trim()||'A definir',idade=document.getElementById('idade').value.trim()||'A definir',local=document.getElementById('local').value.trim()||'A definir',convidados=document.getElementById('convidados').value.trim()||'A definir',det=document.getElementById('detalhes').value.trim()||'Ainda não informado';
+const d=formatDateBR(dataInput.value),tipo=document.getElementById('tipo').value||'A definir',tema=document.getElementById('tema').value.trim()||'A definir',cidade=document.getElementById('cidade').value.trim()||'A definir',idade=document.getElementById('idade').value.trim()||'A definir',local=document.getElementById('local').value.trim()||'A definir',convidados=document.getElementById('convidados').value.trim()||'A definir',faixa=document.getElementById('faixa').value||'Não informado',det=document.getElementById('detalhes').value.trim()||'Ainda não informado';
 const msg=`Olá! Meu nome é ${n.value.trim()} e gostaria de solicitar um orçamento com a Festas By Valkiria.
 
 Meu WhatsApp: ${t.value.trim()}
@@ -23,10 +23,11 @@ Tipo de evento: ${tipo}
 Cidade: ${cidade}
 Local da festa: ${local}
 Convidados (aprox.): ${convidados}
+Faixa de orçamento: ${faixa}
 Idade do aniversariante: ${idade}
 Tema / inspiração: ${tema}
 Detalhes: ${det}`;
-const w=window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');if(w)w.opener=null});
+const success=document.getElementById('form-success');success.hidden=false;setTimeout(()=>{const w=window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');if(w)w.opener=null},250)});
 
 const tr=[...document.querySelectorAll('.js-lightbox')],lb=document.querySelector('.lightbox'),img=lb.querySelector('img'),cap=lb.querySelector('figcaption');let cur=0,last=null;
 function openLB(i){cur=i;last=document.activeElement;const e=tr[cur];img.src=e.dataset.image;img.alt=e.dataset.alt||'';cap.textContent=e.dataset.alt||'';lb.hidden=false;document.body.classList.add('no-scroll');lb.querySelector('.lightbox-close').focus()}
@@ -34,3 +35,29 @@ function closeLB(){lb.hidden=true;img.src='';document.body.classList.remove('no-
 function move(d){cur=(cur+d+tr.length)%tr.length;const e=tr[cur];img.src=e.dataset.image;img.alt=e.dataset.alt||'';cap.textContent=e.dataset.alt||''}
 tr.forEach((e,i)=>e.addEventListener('click',()=>openLB(i)));lb.querySelector('.lightbox-close').onclick=closeLB;lb.querySelector('.lightbox-prev').onclick=()=>move(-1);lb.querySelector('.lightbox-next').onclick=()=>move(1);lb.addEventListener('click',e=>{if(e.target===lb)closeLB()});
 document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1)});
+
+
+// Filtros do portfólio
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter=btn.dataset.filter;
+    document.querySelectorAll('.portfolio-grid .work-card').forEach(card=>{
+      card.classList.toggle('is-hidden', filter!=='all' && card.dataset.category!==filter);
+    });
+  });
+});
+
+// CTA dentro do lightbox
+const lbCta=document.querySelector('.lightbox-cta');
+function updateLightboxCTA(){
+  if(!lbCta || !tr[cur]) return;
+  const ref=tr[cur].dataset.alt || 'uma decoração do portfólio';
+  const text=`Olá! Vi ${ref} no site da Festas By Valkiria e gostaria de uma festa parecida.`;
+  lbCta.href=`https://wa.me/554791084409?text=${encodeURIComponent(text)}`;
+}
+const originalOpenLB=openLB;
+openLB=function(i){ originalOpenLB(i); updateLightboxCTA(); };
+const originalMove=move;
+move=function(d){ originalMove(d); updateLightboxCTA(); };
