@@ -14,11 +14,12 @@ function clear(input){input.removeAttribute('aria-invalid');const e=input.closes
 function formatDateBR(v){if(!v)return'A definir';const[y,m,d]=v.split('-');return`${d}/${m}/${y}`}
 
 form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('nome'),t=telefone;[n,t].forEach(clear);let ok=true;if(!n.value.trim()){err(n,'Informe seu nome.');ok=false}if(t.value.replace(/\D/g,'').length<10){err(t,'Informe um WhatsApp válido.');ok=false}if(!ok)return;
-const d=formatDateBR(dataInput.value),tema=document.getElementById('tema').value.trim()||'A definir',cidade=document.getElementById('cidade').value.trim()||'A definir',idade=document.getElementById('idade').value.trim()||'A definir',local=document.getElementById('local').value.trim()||'A definir',convidados=document.getElementById('convidados').value.trim()||'A definir',det=document.getElementById('detalhes').value.trim()||'Ainda não informado';
+const d=formatDateBR(dataInput.value),tipo=document.getElementById('tipo').value||'A definir',tema=document.getElementById('tema').value.trim()||'A definir',cidade=document.getElementById('cidade').value.trim()||'A definir',idade=document.getElementById('idade').value.trim()||'A definir',local=document.getElementById('local').value.trim()||'A definir',convidados=document.getElementById('convidados').value.trim()||'A definir',det=document.getElementById('detalhes').value.trim()||'Ainda não informado';
 const msg=`Olá! Meu nome é ${n.value.trim()} e gostaria de solicitar um orçamento com a Festas By Valkiria.
 
 Meu WhatsApp: ${t.value.trim()}
 Data da festa: ${d}
+Tipo de evento: ${tipo}
 Cidade: ${cidade}
 Local da festa: ${local}
 Convidados (aprox.): ${convidados}
