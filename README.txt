@@ -1,17 +1,20 @@
-FESTAS BY VALKIRIA — V5.6.2 MOBILE POLISH
+FESTAS BY VALKIRIA — V5.6.4 DOMÍNIO PRÓPRIO
 
-Foco desta rodada:
-- espaçamentos menores e mais consistentes em telas pequenas;
-- hero reequilibrado para celular;
-- menu mobile com áreas de toque maiores;
-- filtros do portfólio em rolagem horizontal;
-- portfólio em uma coluna com proporção visual consistente;
-- formulário com campos em uma coluna;
-- inputs com 16px para evitar zoom automático no iPhone;
-- botões com altura mínima adequada para toque;
-- lightbox melhor adaptado a telas pequenas;
-- CTA e WhatsApp ajustados para safe-area;
-- viewport-fit=cover adicionado;
-- desktop preservado.
+Domínio oficial:
+https://festasbyvalkiria.com
 
-Base: V5.6.1 revisada.
+Atualizações:
+- canonical apontando para festasbyvalkiria.com;
+- og:url atualizado;
+- og:image com URL absoluta no domínio oficial;
+- Twitter image atualizado;
+- JSON-LD LocalBusiness atualizado para o domínio oficial;
+- sitemap.xml atualizado;
+- robots.txt atualizado;
+- sitemap-template.xml atualizado para não deixar referência antiga;
+- security.txt recebeu Canonical absoluto;
+- hashes da Content-Security-Policy recalculados.
+
+Observação:
+O domínio já pode ser enviado ao Google Search Console assim que o HTTPS estiver ativo.
+A configuração DNS/SSL continua sendo feita pelo Cloudflare + Netlify.
