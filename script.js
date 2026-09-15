@@ -1,21 +1,84 @@
-const menuButton=document.querySelector('.menu-toggle'),nav=document.querySelector('.main-nav');
-function closeMenu(){nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Abrir menu')}
-menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Fechar menu':'Abrir menu')});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open'))closeMenu()});
+const menuButton=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.main-nav');
 
-const form=document.getElementById('budget-form'),phone='554791084409',telefone=document.getElementById('telefone'),dataInput=document.getElementById('data');
-const now=new Date(),yyyy=now.getFullYear(),mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
-dataInput.min=`${yyyy}-${mm}-${dd}`;
+function closeMenu(){
+  if(!nav||!menuButton)return;
+  nav.classList.remove('open');
+  menuButton.setAttribute('aria-expanded','false');
+  menuButton.setAttribute('aria-label','Abrir menu');
+}
+if(menuButton&&nav){
+  menuButton.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded',String(open));
+    menuButton.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&nav?.classList.contains('open'))closeMenu();
+});
 
-telefone.addEventListener('input',()=>{let v=telefone.value.replace(/\D/g,'').slice(0,11);if(v.length>10)v=v.replace(/^(\d{2})(\d{5})(\d{0,4})$/,'($1) $2-$3');else if(v.length>6)v=v.replace(/^(\d{2})(\d{4})(\d{0,4})$/,'($1) $2-$3');else if(v.length>2)v=v.replace(/^(\d{2})(\d{0,5})$/,'($1) $2');else if(v.length)v=v.replace(/^(\d{0,2})$/,'($1');telefone.value=v});
-function err(input,msg){input.setAttribute('aria-invalid','true');const e=input.closest('.field')?.querySelector('.error');if(e)e.textContent=msg}
-function clear(input){input.removeAttribute('aria-invalid');const e=input.closest('.field')?.querySelector('.error');if(e)e.textContent=''}
-function formatDateBR(v){if(!v)return'A definir';const[y,m,d]=v.split('-');return`${d}/${m}/${y}`}
+const form=document.getElementById('budget-form');
+const phone='554791084409';
+const telefone=document.getElementById('telefone');
+const dataInput=document.getElementById('data');
 
-form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('nome'),t=telefone;[n,t].forEach(clear);let ok=true;if(!n.value.trim()){err(n,'Informe seu nome.');ok=false}if(t.value.replace(/\D/g,'').length<10){err(t,'Informe um WhatsApp válido.');ok=false}if(!ok)return;
-const d=formatDateBR(dataInput.value),tipo=document.getElementById('tipo').value||'A definir',tema=document.getElementById('tema').value.trim()||'A definir',cidade=document.getElementById('cidade').value.trim()||'A definir',idade=document.getElementById('idade').value.trim()||'A definir',local=document.getElementById('local').value.trim()||'A definir',convidados=document.getElementById('convidados').value.trim()||'A definir',faixa=document.getElementById('faixa').value||'Não informado',det=document.getElementById('detalhes').value.trim()||'Ainda não informado';
-const msg=`Olá! Meu nome é ${n.value.trim()} e gostaria de solicitar um orçamento com a Festas By Valkiria.
+if(dataInput){
+  const now=new Date();
+  const yyyy=now.getFullYear(),mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
+  dataInput.min=`${yyyy}-${mm}-${dd}`;
+}
+
+if(telefone){
+  telefone.addEventListener('input',()=>{
+    let v=telefone.value.replace(/\D/g,'').slice(0,11);
+    if(v.length>10)v=v.replace(/^(\d{2})(\d{5})(\d{0,4})$/,'($1) $2-$3');
+    else if(v.length>6)v=v.replace(/^(\d{2})(\d{4})(\d{0,4})$/,'($1) $2-$3');
+    else if(v.length>2)v=v.replace(/^(\d{2})(\d{0,5})$/,'($1) $2');
+    else if(v.length)v=v.replace(/^(\d{0,2})$/,'($1');
+    telefone.value=v;
+  });
+}
+
+function err(input,msg){
+  input.setAttribute('aria-invalid','true');
+  const el=input.closest('.field')?.querySelector('.error');
+  if(el)el.textContent=msg;
+}
+function clearErr(input){
+  input.removeAttribute('aria-invalid');
+  const el=input.closest('.field')?.querySelector('.error');
+  if(el)el.textContent='';
+}
+function formatDateBR(v){
+  if(!v)return'A definir';
+  const[y,m,d]=v.split('-');
+  return`${d}/${m}/${y}`;
+}
+
+if(form&&telefone&&dataInput){
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const n=document.getElementById('nome');
+    const t=telefone;
+    [n,t].forEach(clearErr);
+    let ok=true;
+    if(!n.value.trim()){err(n,'Informe seu nome.');ok=false;}
+    if(t.value.replace(/\D/g,'').length<10){err(t,'Informe um WhatsApp válido.');ok=false;}
+    if(!ok)return;
+
+    const d=formatDateBR(dataInput.value);
+    const tipo=document.getElementById('tipo')?.value||'A definir';
+    const tema=document.getElementById('tema')?.value.trim()||'A definir';
+    const cidade=document.getElementById('cidade')?.value.trim()||'A definir';
+    const idade=document.getElementById('idade')?.value.trim()||'A definir';
+    const local=document.getElementById('local')?.value.trim()||'A definir';
+    const convidados=document.getElementById('convidados')?.value.trim()||'A definir';
+    const faixa=document.getElementById('faixa')?.value||'Não informado';
+    const det=document.getElementById('detalhes')?.value.trim()||'Ainda não informado';
+
+    const msg=`Olá! Meu nome é ${n.value.trim()} e gostaria de solicitar um orçamento com a Festas By Valkiria.
 
 Meu WhatsApp: ${t.value.trim()}
 Data da festa: ${d}
@@ -27,37 +90,80 @@ Faixa de orçamento: ${faixa}
 Idade do aniversariante: ${idade}
 Tema / inspiração: ${tema}
 Detalhes: ${det}`;
-const success=document.getElementById('form-success');success.hidden=false;setTimeout(()=>{const w=window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');if(w)w.opener=null},250)});
 
-const tr=[...document.querySelectorAll('.js-lightbox')],lb=document.querySelector('.lightbox'),img=lb.querySelector('img'),cap=lb.querySelector('figcaption');let cur=0,last=null;
-function openLB(i){cur=i;last=document.activeElement;const e=tr[cur];img.src=e.dataset.image;img.alt=e.dataset.alt||'';cap.textContent=e.dataset.alt||'';lb.hidden=false;document.body.classList.add('no-scroll');lb.querySelector('.lightbox-close').focus()}
-function closeLB(){lb.hidden=true;img.src='';document.body.classList.remove('no-scroll');if(last)last.focus()}
-function move(d){cur=(cur+d+tr.length)%tr.length;const e=tr[cur];img.src=e.dataset.image;img.alt=e.dataset.alt||'';cap.textContent=e.dataset.alt||''}
-tr.forEach((e,i)=>e.addEventListener('click',()=>openLB(i)));lb.querySelector('.lightbox-close').onclick=closeLB;lb.querySelector('.lightbox-prev').onclick=()=>move(-1);lb.querySelector('.lightbox-next').onclick=()=>move(1);lb.addEventListener('click',e=>{if(e.target===lb)closeLB()});
-document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1)});
+    const success=document.getElementById('form-success');
+    if(success){
+      success.hidden=false;
+      success.textContent='Abrindo o WhatsApp com seu pedido...';
+    }
+    window.location.assign(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`);
+  });
+}
 
+const allLightboxItems=[...document.querySelectorAll('.js-lightbox')];
+const lb=document.querySelector('.lightbox');
+const lbImg=lb?.querySelector('img');
+const lbCap=lb?.querySelector('figcaption');
+const lbCta=lb?.querySelector('.lightbox-cta');
+let cur=0,last=null;
 
-// Filtros do portfólio
+function updateLightbox(){
+  const item=allLightboxItems[cur];
+  if(!item||!lbImg||!lbCap)return;
+  lbImg.src=item.dataset.image||'';
+  lbImg.alt=item.dataset.alt||'';
+  lbCap.textContent=item.dataset.alt||'';
+  if(lbCta){
+    const ref=item.dataset.alt||'uma decoração do portfólio';
+    const text=`Olá! Vi ${ref} no site da Festas By Valkiria e gostaria de uma festa parecida.`;
+    lbCta.href=`https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  }
+}
+function openLB(i){
+  if(!lb)return;
+  cur=i;
+  last=document.activeElement;
+  updateLightbox();
+  lb.hidden=false;
+  document.body.classList.add('no-scroll');
+  lb.querySelector('.lightbox-close')?.focus();
+}
+function closeLB(){
+  if(!lb)return;
+  lb.hidden=true;
+  if(lbImg)lbImg.src='';
+  document.body.classList.remove('no-scroll');
+  if(last instanceof HTMLElement)last.focus();
+}
+function moveLB(delta){
+  if(!allLightboxItems.length)return;
+  cur=(cur+delta+allLightboxItems.length)%allLightboxItems.length;
+  updateLightbox();
+}
+
+allLightboxItems.forEach((item,i)=>item.addEventListener('click',()=>openLB(i)));
+lb?.querySelector('.lightbox-close')?.addEventListener('click',closeLB);
+lb?.querySelector('.lightbox-prev')?.addEventListener('click',()=>moveLB(-1));
+lb?.querySelector('.lightbox-next')?.addEventListener('click',()=>moveLB(1));
+lb?.addEventListener('click',e=>{if(e.target===lb)closeLB();});
+document.addEventListener('keydown',e=>{
+  if(!lb||lb.hidden)return;
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft')moveLB(-1);
+  if(e.key==='ArrowRight')moveLB(1);
+});
+
 document.querySelectorAll('.filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.filter-btn').forEach(b=>{
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed','false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed','true');
     const filter=btn.dataset.filter;
     document.querySelectorAll('.portfolio-grid .work-card').forEach(card=>{
-      card.classList.toggle('is-hidden', filter!=='all' && card.dataset.category!==filter);
+      card.classList.toggle('is-hidden',filter!=='all'&&card.dataset.category!==filter);
     });
   });
 });
-
-// CTA dentro do lightbox
-const lbCta=document.querySelector('.lightbox-cta');
-function updateLightboxCTA(){
-  if(!lbCta || !tr[cur]) return;
-  const ref=tr[cur].dataset.alt || 'uma decoração do portfólio';
-  const text=`Olá! Vi ${ref} no site da Festas By Valkiria e gostaria de uma festa parecida.`;
-  lbCta.href=`https://wa.me/554791084409?text=${encodeURIComponent(text)}`;
-}
-const originalOpenLB=openLB;
-openLB=function(i){ originalOpenLB(i); updateLightboxCTA(); };
-const originalMove=move;
-move=function(d){ originalMove(d); updateLightboxCTA(); };
