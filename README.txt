@@ -1,18 +1,17 @@
-FESTAS BY VALKIRIA — V5.6.1 REVISADA
+FESTAS BY VALKIRIA — V5.6.2 MOBILE POLISH
 
-Correções/revisões:
-- Hero corrigido para “A vida acontece nos detalhes...”.
-- Subtexto do hero corrigido.
-- Removidos textos com aparência de nota interna do site público.
-- Formulário do WhatsApp ajustado para não depender de popup com atraso.
-- Dimensões adicionadas às imagens para reduzir mudança de layout.
-- Filtros com estado acessível aria-pressed.
-- SEO social: canonical, og:url, OG image absoluta e Twitter cards.
-- sitemap.xml real + robots.txt apontando para ele.
-- JSON-LD com URL/imagem e hashes CSP recalculados.
-- Script revisado e simplificado.
-- As 10 novas fotos da V5.6 foram preservadas.
+Foco desta rodada:
+- espaçamentos menores e mais consistentes em telas pequenas;
+- hero reequilibrado para celular;
+- menu mobile com áreas de toque maiores;
+- filtros do portfólio em rolagem horizontal;
+- portfólio em uma coluna com proporção visual consistente;
+- formulário com campos em uma coluna;
+- inputs com 16px para evitar zoom automático no iPhone;
+- botões com altura mínima adequada para toque;
+- lightbox melhor adaptado a telas pequenas;
+- CTA e WhatsApp ajustados para safe-area;
+- viewport-fit=cover adicionado;
+- desktop preservado.
 
-Observação:
-Se futuramente for usado um domínio próprio, atualizar canonical, og:url,
-og:image, sitemap.xml, robots.txt e URL do JSON-LD para o novo domínio.
+Base: V5.6.1 revisada.

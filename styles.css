@@ -88,3 +88,396 @@ body{padding-bottom:68px}.whatsapp-float{bottom:82px}
 .work-card span small{font-weight:700;opacity:.65;margin-top:1px}
 .field select{font:inherit}
 @media(max-width:560px){.hero-copy h1{font-size:clamp(42px,13vw,61px)}}
+
+
+/* V5.6.2 — rodada final focada em celular */
+@media(max-width: 760px){
+  html{scroll-padding-top:78px}
+  body{overflow-x:hidden}
+
+  .container{
+    width:min(100% - 28px, 1180px);
+  }
+
+  .site-header .container{
+    min-height:68px;
+  }
+
+  .brand img{
+    max-height:48px;
+    width:auto;
+  }
+
+  .menu-toggle{
+    min-width:44px;
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+  }
+
+  .main-nav{
+    top:68px;
+    left:14px;
+    right:14px;
+    max-height:calc(100dvh - 88px);
+    overflow-y:auto;
+    border-radius:20px;
+    padding:12px;
+  }
+
+  .main-nav a{
+    min-height:46px;
+    display:flex;
+    align-items:center;
+    padding:10px 12px;
+    border-radius:12px;
+  }
+
+  .hero{
+    padding-top:38px;
+    padding-bottom:44px;
+  }
+
+  .hero-grid{
+    gap:30px;
+  }
+
+  .hero-copy h1{
+    font-size:clamp(40px,12.8vw,58px);
+    line-height:.98;
+    letter-spacing:-.045em;
+    max-width:100%;
+    text-wrap:balance;
+  }
+
+  .hero-copy .lead{
+    font-size:16px;
+    line-height:1.65;
+    margin-top:20px;
+    max-width:35rem;
+  }
+
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .hero-actions .button{
+    width:100%;
+    min-height:50px;
+    justify-content:center;
+  }
+
+  .trust-row{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:7px;
+    margin-top:20px;
+  }
+
+  .hero-gallery{
+    gap:10px;
+    min-height:auto;
+  }
+
+  .hero-gallery img{
+    border-radius:20px;
+  }
+
+  .section{
+    padding-top:58px;
+    padding-bottom:58px;
+  }
+
+  .section-heading{
+    margin-bottom:24px;
+  }
+
+  .section-heading h2,
+  .about-copy h2{
+    font-size:clamp(30px,9vw,42px);
+    line-height:1.05;
+    text-wrap:balance;
+  }
+
+  .section-heading p,
+  .about-copy>p:not(.eyebrow){
+    font-size:15px;
+    line-height:1.65;
+  }
+
+  .portfolio-filters{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    gap:8px;
+    margin:0 -14px 20px;
+    padding:2px 14px 8px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+  }
+
+  .portfolio-filters::-webkit-scrollbar{
+    display:none;
+  }
+
+  .filter-btn{
+    flex:0 0 auto;
+    min-height:42px;
+    padding:10px 15px;
+    scroll-snap-align:start;
+    white-space:nowrap;
+  }
+
+  .portfolio-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .portfolio-grid .work-card,
+  .portfolio-grid .work-card.wide,
+  .portfolio-grid .work-card.tall{
+    grid-column:auto;
+    min-height:0;
+    aspect-ratio:4/3;
+    border-radius:20px;
+  }
+
+  .portfolio-grid .work-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .work-card span{
+    padding:14px 15px;
+  }
+
+  .work-card span b{
+    font-size:15px;
+  }
+
+  .work-card span small{
+    font-size:12px;
+  }
+
+  .portfolio-maintenance{
+    align-items:flex-start;
+    gap:5px;
+    line-height:1.5;
+  }
+
+  .about-grid{
+    gap:28px;
+  }
+
+  .about-image{
+    border-radius:22px;
+  }
+
+  .about-image img{
+    height:auto;
+    aspect-ratio:4/5;
+    object-fit:cover;
+  }
+
+  .about-highlights{
+    gap:8px;
+  }
+
+  .about-highlights span{
+    font-size:11px;
+    padding:8px 10px;
+  }
+
+  .possibility-grid{
+    gap:12px;
+  }
+
+  .possibility-grid article{
+    padding:20px;
+    border-radius:18px;
+  }
+
+  .steps-grid,
+  .service-grid,
+  .faq-grid{
+    gap:12px;
+  }
+
+  .memory-banner{
+    margin:10px 0 28px;
+    padding:30px 18px;
+  }
+
+  .memory-banner strong{
+    font-size:clamp(26px,8.5vw,38px);
+    text-wrap:balance;
+  }
+
+  .emotional-quote{
+    margin:0 auto 24px;
+  }
+
+  .emotional-quote p{
+    font-size:clamp(22px,7.2vw,31px);
+  }
+
+  form{
+    width:100%;
+  }
+
+  .form-card,
+  .budget-card{
+    padding:20px 16px;
+    border-radius:22px;
+  }
+
+  .two-cols{
+    grid-template-columns:1fr !important;
+    gap:0 !important;
+  }
+
+  .field{
+    margin-bottom:14px;
+  }
+
+  .field label{
+    font-size:13px;
+    margin-bottom:7px;
+  }
+
+  .field input,
+  .field textarea,
+  .field select{
+    min-height:48px;
+    font-size:16px; /* evita zoom automático no iPhone */
+    padding:12px 13px;
+  }
+
+  .field textarea{
+    min-height:120px;
+  }
+
+  .button.full{
+    min-height:52px;
+    font-size:15px;
+  }
+
+  .form-success{
+    line-height:1.45;
+  }
+
+  .testimonial-placeholder{
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .testimonial-placeholder .button{
+    width:100%;
+    justify-content:center;
+  }
+
+  .lightbox{
+    padding:14px;
+  }
+
+  .lightbox figure{
+    width:100%;
+    max-width:none;
+    margin:0;
+  }
+
+  .lightbox figure img{
+    max-height:70dvh;
+    width:100%;
+    object-fit:contain;
+    border-radius:16px;
+  }
+
+  .lightbox figcaption{
+    font-size:12px;
+    padding:8px 4px 0;
+  }
+
+  .lightbox-cta{
+    width:100%;
+    justify-content:center;
+    min-height:48px;
+    margin-top:10px;
+  }
+
+  .lightbox-close,
+  .lightbox-prev,
+  .lightbox-next{
+    min-width:44px;
+    min-height:44px;
+  }
+
+  .lightbox-prev{
+    left:8px;
+  }
+
+  .lightbox-next{
+    right:8px;
+  }
+
+  .floating-whatsapp{
+    right:14px;
+    bottom:82px;
+    width:54px;
+    height:54px;
+  }
+
+  .mobile-cta{
+    padding-bottom:max(10px, env(safe-area-inset-bottom));
+  }
+
+  .mobile-cta .button{
+    min-height:48px;
+  }
+
+  footer{
+    padding-bottom:90px;
+  }
+}
+
+@media(max-width: 420px){
+  .container{
+    width:min(100% - 22px, 1180px);
+  }
+
+  .hero{
+    padding-top:30px;
+  }
+
+  .hero-copy h1{
+    font-size:clamp(38px,12.5vw,50px);
+  }
+
+  .section{
+    padding-top:50px;
+    padding-bottom:50px;
+  }
+
+  .portfolio-filters{
+    margin-left:-11px;
+    margin-right:-11px;
+    padding-left:11px;
+    padding-right:11px;
+  }
+
+  .memory-banner{
+    padding-left:15px;
+    padding-right:15px;
+  }
+
+  .floating-whatsapp{
+    width:50px;
+    height:50px;
+  }
+}
