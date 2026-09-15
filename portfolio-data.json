@@ -33,5 +33,55 @@
     "file": "brinquedos.webp",
     "title": "Projetos especiais",
     "category": "classicos"
+  },
+  {
+    "file": "fundo-do-mar-2.webp",
+    "title": "Fundo do mar",
+    "category": "aventura"
+  },
+  {
+    "file": "carros-fusca.webp",
+    "title": "Carros",
+    "category": "aventura"
+  },
+  {
+    "file": "bosque.webp",
+    "title": "Bosque",
+    "category": "aventura"
+  },
+  {
+    "file": "chapeuzinho-vermelho.webp",
+    "title": "Chapeuzinho Vermelho",
+    "category": "classicos"
+  },
+  {
+    "file": "safari.webp",
+    "title": "Safari",
+    "category": "aventura"
+  },
+  {
+    "file": "borboletas-pastel.webp",
+    "title": "Borboletas",
+    "category": "princesas"
+  },
+  {
+    "file": "fazendinha.webp",
+    "title": "Fazendinha",
+    "category": "aventura"
+  },
+  {
+    "file": "minnie-doces.jpg",
+    "title": "Minnie",
+    "category": "classicos"
+  },
+  {
+    "file": "borboletas-rosa.webp",
+    "title": "Borboletas",
+    "category": "princesas"
+  },
+  {
+    "file": "fazendinha-rosa.webp",
+    "title": "Fazendinha",
+    "category": "aventura"
   }
 ]

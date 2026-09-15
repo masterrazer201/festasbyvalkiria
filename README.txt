@@ -1,21 +1,12 @@
-FESTAS BY VALKIRIA — V5.4 GROWTH
+FESTAS BY VALKIRIA — V5.6 PORTFÓLIO
 
 Novidades:
-- SEO local refinado
-- filtros no portfólio
-- botão "Quero uma festa assim" dentro do lightbox
-- faixa de orçamento opcional
-- feedback antes de abrir o WhatsApp
-- arquivo portfolio-data.json para facilitar manutenção futura
-- refinamentos de conversão
+- 10 novos trabalhos reais adicionados ao portfólio.
+- Novas imagens organizadas e renomeadas dentro de /assets.
+- Categorias integradas aos filtros existentes.
+- Foto Fundo do Mar recebeu destaque maior na grade.
+- Todas as novas imagens usam lazy loading e decoding assíncrono.
+- Todas funcionam com lightbox e “Quero uma festa assim”.
+- portfolio-data.json atualizado.
 
-Mantidos:
-- favicon.ico
-- hardening de segurança
-- PWA
-- FAQ
-- 404
-- WhatsApp e Instagram
-- imagens WebP
-- SEO estruturado
-- responsividade
+Mantidas todas as melhorias da V5.5.
