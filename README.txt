@@ -1,12 +1,15 @@
-FESTAS BY VALKIRIA — V5.8.2 SEO META
+FESTAS BY VALKIRIA — V5.8.3 SHARE PREVIEW FIX
 
-Correção:
-- meta description reduzida para evitar truncamento em resultados de busca;
-- nova descrição: Decoração de festas em Joinville e região. Projetos personalizados, portfólio real e orçamento pelo WhatsApp com a Festas By Valkiria.
+Correção para prévia de compartilhamento:
+- removido X-Robots-Tag: noindex, nofollow global dos headers;
+- NOINDEX continua no HTML da página, então o Google continua instruído a não indexar;
+- imagem Open Graph ganhou um novo URL: og-whatsapp-v2.jpg;
+- og:locale pt_BR adicionado;
+- Open Graph e Twitter Card preservados.
 
-Mantido:
-- Open Graph/WhatsApp Share da V5.8.1;
-- 54 fotos;
-- páginas legais;
-- PWA;
-- NOINDEX temporário enquanto o site ainda está em finalização.
+Objetivo:
+permitir que crawlers de compartilhamento tenham uma resposta HTTP menos restritiva
+e forçar nova tentativa de cache da imagem social.
+
+IMPORTANTE:
+o site continua com meta robots noindex enquanto ainda está em finalização.
