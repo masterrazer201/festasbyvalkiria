@@ -151,20 +151,6 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')moveLB(1);
 });
 
-document.querySelectorAll('.filter-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.filter-btn').forEach(b=>{
-      b.classList.remove('active');
-      b.setAttribute('aria-pressed','false');
-    });
-    btn.classList.add('active');
-    btn.setAttribute('aria-pressed','true');
-    const filter=btn.dataset.filter;
-    document.querySelectorAll('.portfolio-grid .work-card').forEach(card=>{
-      card.classList.toggle('is-hidden',filter!=='all'&&card.dataset.category!==filter);
-    });
-  });
-});
 
 
 // Portfólio V5.7 — filtros + carregamento progressivo
