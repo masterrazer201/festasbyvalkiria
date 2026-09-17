@@ -1,19 +1,16 @@
-FESTAS BY VALKIRIA — V5.8 POLIMENTO
+FESTAS BY VALKIRIA — V5.8.1 WHATSAPP SHARE
 
-Melhorias sem alterar o visual principal:
-- logo reduzida de 1600px para 512px, diminuindo o peso do carregamento;
-- ícones PWA 192px, 512px e Apple Touch Icon;
-- manifest.webmanifest ampliado;
-- lightbox agora respeita o filtro ativo do portfólio;
-- navegação por setas não pula para fotos escondidas por outro filtro;
-- foco preso dentro do lightbox enquanto ele está aberto;
-- menu mobile fecha ao tocar fora;
-- formulário abre WhatsApp em nova guia de forma síncrona, com fallback seguro;
-- campos principais ganharam ligações ARIA com mensagens de erro;
-- contador acessível de resultados nos filtros;
-- páginas legais e 404 não usam mais CSS inline;
-- Content-Security-Policy reforçada: style-src agora é somente 'self';
-- og:site_name adicionado;
-- 54 fotos, filtros, páginas legais e NOINDEX temporário preservados.
+Adicionado:
+- imagem exclusiva de compartilhamento 1200x630;
+- preview social com logo, decoração real e domínio;
+- og:image / og:image:secure_url / og:image:alt atualizados;
+- Twitter Card atualizado;
+- botão “Compartilhar no WhatsApp” no rodapé;
+- mensagem pronta com o domínio festasbyvalkiria.com.
 
-Quando o site estiver definitivamente aprovado, ainda será necessário remover o NOINDEX.
+NOINDEX temporário continua preservado enquanto o site ainda está em finalização.
+
+Observação:
+O WhatsApp pode manter cache da prévia antiga por algum tempo. Como o arquivo
+novo possui nome próprio (og-whatsapp-v1.jpg), a troca tende a ser reconhecida
+mais facilmente.
