@@ -1,20 +1,15 @@
-FESTAS BY VALKIRIA — V5.6.4 DOMÍNIO PRÓPRIO
+FESTAS BY VALKIRIA — V5.7 PORTFÓLIO 54
 
-Domínio oficial:
-https://festasbyvalkiria.com
+Nesta versão:
+- todas as fotos antigas do site foram removidas da versão completa;
+- 54 fotos oficiais do ZIP foram incorporadas;
+- fotos otimizadas e padronizadas em assets/portfolio;
+- hero renovado com Fundo do Mar, Safari e Cores Pastel;
+- imagem institucional renovada com Jardim Encantado;
+- filtros reorganizados: Personagens, Aventura, Natureza, Delicados e Clássicos;
+- portfólio mostra 12 trabalhos inicialmente e possui “Ver mais trabalhos”;
+- todos os 54 projetos continuam disponíveis nos filtros;
+- lightbox e “Quero uma festa assim” preservados;
+- noindex temporário PRESERVADO enquanto o site ainda está em finalização.
 
-Atualizações:
-- canonical apontando para festasbyvalkiria.com;
-- og:url atualizado;
-- og:image com URL absoluta no domínio oficial;
-- Twitter image atualizado;
-- JSON-LD LocalBusiness atualizado para o domínio oficial;
-- sitemap.xml atualizado;
-- robots.txt atualizado;
-- sitemap-template.xml atualizado para não deixar referência antiga;
-- security.txt recebeu Canonical absoluto;
-- hashes da Content-Security-Policy recalculados.
-
-Observação:
-O domínio já pode ser enviado ao Google Search Console assim que o HTTPS estiver ativo.
-A configuração DNS/SSL continua sendo feita pelo Cloudflare + Netlify.
+Quando o site estiver aprovado, removeremos o noindex e liberaremos novamente a indexação.

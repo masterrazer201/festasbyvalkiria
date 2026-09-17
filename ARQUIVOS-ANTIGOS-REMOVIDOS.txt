@@ -1,0 +1,5 @@
+A versão completa V5.7 já não contém as imagens antigas de temas.
+Se você aplicar somente o PATCH em um repositório existente, os arquivos antigos
+podem continuar armazenados no GitHub, porém não serão exibidos nem carregados.
+
+Para limpeza total do repositório, prefira substituir pela versão completa V5.7.

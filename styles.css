@@ -526,3 +526,11 @@ body{padding-bottom:68px}.whatsapp-float{bottom:82px}
     display:none !important;
   }
 }
+
+
+/* V5.7 — portfólio com 54 trabalhos */
+.portfolio-more-wrap{display:flex;justify-content:center;margin-top:24px}
+.portfolio-more{min-width:210px}
+@media(max-width:760px){
+  .portfolio-more{width:100%;min-height:50px}
+}

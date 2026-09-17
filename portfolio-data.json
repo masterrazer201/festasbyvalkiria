@@ -1,87 +1,428 @@
 [
   {
-    "file": "heroes.webp",
-    "title": "Super-heróis",
-    "category": "herois"
-  },
-  {
-    "file": "sonic.webp",
-    "title": "Sonic",
-    "category": "aventura"
-  },
-  {
-    "file": "bela.webp",
-    "title": "Contos & princesas",
-    "category": "princesas"
-  },
-  {
-    "file": "mickey.webp",
-    "title": "Clássicos",
-    "category": "classicos"
-  },
-  {
-    "file": "hot-wheels.webp",
-    "title": "Aventura",
-    "category": "aventura"
-  },
-  {
-    "file": "sereia.webp",
-    "title": "Fundo do mar",
-    "category": "princesas"
-  },
-  {
-    "file": "brinquedos.webp",
-    "title": "Projetos especiais",
-    "category": "classicos"
-  },
-  {
-    "file": "fundo-do-mar-2.webp",
-    "title": "Fundo do mar",
-    "category": "aventura"
-  },
-  {
-    "file": "carros-fusca.webp",
-    "title": "Carros",
-    "category": "aventura"
-  },
-  {
-    "file": "bosque.webp",
-    "title": "Bosque",
-    "category": "aventura"
-  },
-  {
-    "file": "chapeuzinho-vermelho.webp",
-    "title": "Chapeuzinho Vermelho",
-    "category": "classicos"
-  },
-  {
     "file": "safari.webp",
     "title": "Safari",
-    "category": "aventura"
+    "categories": [
+      "natureza",
+      "aventura"
+    ]
   },
   {
-    "file": "borboletas-pastel.webp",
-    "title": "Borboletas",
-    "category": "princesas"
+    "file": "cores-pastel.webp",
+    "title": "Cores pastel",
+    "categories": [
+      "delicados"
+    ]
+  },
+  {
+    "file": "astronauta.webp",
+    "title": "Astronauta",
+    "categories": [
+      "aventura"
+    ]
+  },
+  {
+    "file": "harry-potter.webp",
+    "title": "Harry Potter",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "jardim-encantado.webp",
+    "title": "Jardim encantado",
+    "categories": [
+      "delicados",
+      "natureza"
+    ]
   },
   {
     "file": "fazendinha.webp",
     "title": "Fazendinha",
-    "category": "aventura"
+    "categories": [
+      "natureza"
+    ]
   },
   {
-    "file": "minnie-doces.jpg",
+    "file": "basquete.webp",
+    "title": "Basquete",
+    "categories": [
+      "aventura"
+    ]
+  },
+  {
+    "file": "moana.webp",
+    "title": "Moana",
+    "categories": [
+      "personagens",
+      "aventura",
+      "natureza"
+    ]
+  },
+  {
+    "file": "dinossauros.webp",
+    "title": "Dinossauros",
+    "categories": [
+      "aventura",
+      "natureza"
+    ]
+  },
+  {
+    "file": "mickey.webp",
+    "title": "Mickey",
+    "categories": [
+      "personagens",
+      "classicos"
+    ]
+  },
+  {
+    "file": "confeitaria.webp",
+    "title": "Confeitaria",
+    "categories": [
+      "delicados"
+    ]
+  },
+  {
+    "file": "baby-yoda.webp",
+    "title": "Baby Yoda",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "fundo-do-mar.webp",
+    "title": "Fundo do mar",
+    "categories": [
+      "aventura",
+      "natureza"
+    ]
+  },
+  {
+    "file": "toy-story.webp",
+    "title": "Toy Story",
+    "categories": [
+      "personagens",
+      "classicos"
+    ]
+  },
+  {
+    "file": "a-bela-e-a-fera.webp",
+    "title": "A Bela e a Fera",
+    "categories": [
+      "personagens",
+      "delicados",
+      "classicos"
+    ]
+  },
+  {
+    "file": "vaquinha.webp",
+    "title": "Vaquinha",
+    "categories": [
+      "natureza",
+      "delicados"
+    ]
+  },
+  {
+    "file": "bumblebee.webp",
+    "title": "Bumblebee",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "branca-de-neve.webp",
+    "title": "Branca de Neve",
+    "categories": [
+      "personagens",
+      "delicados",
+      "classicos"
+    ]
+  },
+  {
+    "file": "arca-de-noe.webp",
+    "title": "Arca de Noé",
+    "categories": [
+      "natureza",
+      "classicos"
+    ]
+  },
+  {
+    "file": "surf.webp",
+    "title": "Surf",
+    "categories": [
+      "aventura"
+    ]
+  },
+  {
+    "file": "doces-candy-colors.webp",
+    "title": "Doces & candy colors",
+    "categories": [
+      "delicados"
+    ]
+  },
+  {
+    "file": "super-herois.webp",
+    "title": "Super-heróis",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "carros.webp",
+    "title": "Carros",
+    "categories": [
+      "aventura",
+      "classicos"
+    ]
+  },
+  {
+    "file": "floresta-encantada.webp",
+    "title": "Floresta encantada",
+    "categories": [
+      "natureza",
+      "aventura"
+    ]
+  },
+  {
+    "file": "minnie.webp",
     "title": "Minnie",
-    "category": "classicos"
+    "categories": [
+      "personagens",
+      "delicados",
+      "classicos"
+    ]
   },
   {
-    "file": "borboletas-rosa.webp",
-    "title": "Borboletas",
-    "category": "princesas"
+    "file": "pool-party.webp",
+    "title": "Pool Party",
+    "categories": [
+      "aventura"
+    ]
+  },
+  {
+    "file": "naruto.webp",
+    "title": "Naruto",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "capivara.webp",
+    "title": "Capivara",
+    "categories": [
+      "natureza",
+      "delicados"
+    ]
   },
   {
     "file": "fazendinha-rosa.webp",
+    "title": "Fazendinha rosa",
+    "categories": [
+      "natureza",
+      "delicados"
+    ]
+  },
+  {
+    "file": "hello-kitty.webp",
+    "title": "Hello Kitty",
+    "categories": [
+      "personagens",
+      "delicados"
+    ]
+  },
+  {
+    "file": "marinheiro.webp",
+    "title": "Marinheiro",
+    "categories": [
+      "aventura"
+    ]
+  },
+  {
+    "file": "peter-pan.webp",
+    "title": "Peter Pan",
+    "categories": [
+      "personagens",
+      "aventura",
+      "classicos"
+    ]
+  },
+  {
+    "file": "stumble-guys.webp",
+    "title": "Stumble Guys",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "one-piece.webp",
+    "title": "One Piece",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "chapeuzinho-vermelho.webp",
+    "title": "Chapeuzinho Vermelho",
+    "categories": [
+      "classicos",
+      "natureza"
+    ]
+  },
+  {
+    "file": "disney.webp",
+    "title": "Disney",
+    "categories": [
+      "personagens",
+      "classicos"
+    ]
+  },
+  {
+    "file": "miles-morales.webp",
+    "title": "Miles Morales",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "ursinhos.webp",
+    "title": "Ursinhos",
+    "categories": [
+      "delicados",
+      "natureza"
+    ]
+  },
+  {
+    "file": "brinquedos-cores.webp",
+    "title": "Brinquedos & cores",
+    "categories": [
+      "classicos",
+      "delicados"
+    ]
+  },
+  {
+    "file": "primeiro-ano.webp",
+    "title": "Primeiro ano",
+    "categories": [
+      "delicados"
+    ]
+  },
+  {
+    "file": "cinema.webp",
+    "title": "Cinema",
+    "categories": [
+      "aventura"
+    ]
+  },
+  {
+    "file": "fazendinha-2.webp",
     "title": "Fazendinha",
-    "category": "aventura"
+    "categories": [
+      "natureza"
+    ]
+  },
+  {
+    "file": "moana-2.webp",
+    "title": "Moana",
+    "categories": [
+      "personagens",
+      "aventura",
+      "natureza"
+    ]
+  },
+  {
+    "file": "a-bela-e-a-fera-2.webp",
+    "title": "A Bela e a Fera",
+    "categories": [
+      "personagens",
+      "delicados",
+      "classicos"
+    ]
+  },
+  {
+    "file": "dinossauros-2.webp",
+    "title": "Dinossauros",
+    "categories": [
+      "aventura",
+      "natureza"
+    ]
+  },
+  {
+    "file": "hello-kitty-2.webp",
+    "title": "Hello Kitty",
+    "categories": [
+      "personagens",
+      "delicados"
+    ]
+  },
+  {
+    "file": "minnie-confeiteira.webp",
+    "title": "Minnie confeiteira",
+    "categories": [
+      "personagens",
+      "delicados",
+      "classicos"
+    ]
+  },
+  {
+    "file": "disney-2.webp",
+    "title": "Disney",
+    "categories": [
+      "personagens",
+      "classicos"
+    ]
+  },
+  {
+    "file": "naruto-2.webp",
+    "title": "Naruto",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "cinema-2.webp",
+    "title": "Cinema",
+    "categories": [
+      "aventura"
+    ]
+  },
+  {
+    "file": "fazendinha-3.webp",
+    "title": "Fazendinha",
+    "categories": [
+      "natureza"
+    ]
+  },
+  {
+    "file": "roblox.webp",
+    "title": "Roblox",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
+  },
+  {
+    "file": "jardim-de-borboletas.webp",
+    "title": "Jardim de borboletas",
+    "categories": [
+      "delicados",
+      "natureza"
+    ]
+  },
+  {
+    "file": "patrulha-canina.webp",
+    "title": "Patrulha Canina",
+    "categories": [
+      "personagens",
+      "aventura"
+    ]
   }
 ]

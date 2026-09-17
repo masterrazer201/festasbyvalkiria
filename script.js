@@ -167,3 +167,55 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
     });
   });
 });
+
+
+// Portfólio V5.7 — filtros + carregamento progressivo
+const portfolioCards=[...document.querySelectorAll('.portfolio-grid .work-card')];
+const filterButtons=[...document.querySelectorAll('.filter-btn')];
+const moreButton=document.getElementById('portfolio-more');
+const PORTFOLIO_PAGE=12;
+let portfolioFilter='all';
+let portfolioExpanded=false;
+
+function matchesPortfolio(card){
+  if(portfolioFilter==='all') return true;
+  return (card.dataset.category||'').split(/\s+/).includes(portfolioFilter);
+}
+
+function renderPortfolio(){
+  const matched=portfolioCards.filter(matchesPortfolio);
+  portfolioCards.forEach(card=>card.classList.add('is-hidden'));
+
+  const visible=portfolioExpanded ? matched : matched.slice(0,PORTFOLIO_PAGE);
+  visible.forEach(card=>card.classList.remove('is-hidden'));
+
+  if(moreButton){
+    moreButton.hidden=matched.length<=PORTFOLIO_PAGE;
+    moreButton.textContent=portfolioExpanded?'Mostrar menos':'Ver mais trabalhos';
+    moreButton.setAttribute('aria-expanded',String(portfolioExpanded));
+  }
+}
+
+filterButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    filterButtons.forEach(b=>{
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed','false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed','true');
+    portfolioFilter=btn.dataset.filter||'all';
+    portfolioExpanded=false;
+    renderPortfolio();
+  });
+});
+
+moreButton?.addEventListener('click',()=>{
+  portfolioExpanded=!portfolioExpanded;
+  renderPortfolio();
+  if(!portfolioExpanded){
+    document.getElementById('portfolio')?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+});
+
+renderPortfolio();
