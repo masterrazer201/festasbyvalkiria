@@ -1,9 +1,14 @@
-FESTAS BY VALKIRIA — V5.7.2 ORÇAMENTO
+FESTAS BY VALKIRIA — V5.7.3 LEGAL
 
-Alteração:
-- removido o campo "Convidados (aprox.)" do formulário de orçamento;
-- removida essa informação da mensagem enviada para o WhatsApp;
-- restante do formulário preservado;
-- grade V5.7.1 preservada;
-- 54 fotos preservadas;
-- NOINDEX temporário preservado.
+Adicionado:
+- Política de Privacidade;
+- Termos de Uso;
+- Política de Cookies;
+- links no rodapé do site.
+
+As páginas refletem o funcionamento atual:
+- formulário abre WhatsApp;
+- não há banco de dados próprio no site;
+- não há analytics/pixels/cookies não essenciais atualmente.
+
+NOINDEX temporário preservado no site e também aplicado às páginas legais enquanto o projeto ainda está em finalização.
