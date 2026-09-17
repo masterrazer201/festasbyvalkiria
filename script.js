@@ -74,7 +74,6 @@ if(form&&telefone&&dataInput){
     const cidade=document.getElementById('cidade')?.value.trim()||'A definir';
     const idade=document.getElementById('idade')?.value.trim()||'A definir';
     const local=document.getElementById('local')?.value.trim()||'A definir';
-    const convidados=document.getElementById('convidados')?.value.trim()||'A definir';
     const faixa=document.getElementById('faixa')?.value||'Não informado';
     const det=document.getElementById('detalhes')?.value.trim()||'Ainda não informado';
 
@@ -85,7 +84,6 @@ Data da festa: ${d}
 Tipo de evento: ${tipo}
 Cidade: ${cidade}
 Local da festa: ${local}
-Convidados (aprox.): ${convidados}
 Faixa de orçamento: ${faixa}
 Idade do aniversariante: ${idade}
 Tema / inspiração: ${tema}

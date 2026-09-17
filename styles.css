@@ -534,3 +534,58 @@ body{padding-bottom:68px}.whatsapp-float{bottom:82px}
 @media(max-width:760px){
   .portfolio-more{width:100%;min-height:50px}
 }
+
+
+/* V5.7.1 — correção da grade do portfólio */
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-auto-rows:auto;
+  grid-auto-flow:row;
+  align-items:stretch;
+  gap:14px;
+}
+
+.portfolio-grid .work-card,
+.portfolio-grid .work-card.wide,
+.portfolio-grid .work-card.tall{
+  grid-column:auto;
+  grid-row:auto;
+  width:100%;
+  min-width:0;
+  aspect-ratio:4/3;
+  min-height:0;
+}
+
+.portfolio-grid .work-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+@media(max-width:900px){
+  .portfolio-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .portfolio-grid .work-card,
+  .portfolio-grid .work-card.wide,
+  .portfolio-grid .work-card.tall{
+    grid-column:auto;
+    grid-row:auto;
+    aspect-ratio:4/3;
+  }
+}
+
+@media(max-width:600px){
+  .portfolio-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .portfolio-grid .work-card,
+  .portfolio-grid .work-card.wide,
+  .portfolio-grid .work-card.tall{
+    aspect-ratio:4/3;
+  }
+}
