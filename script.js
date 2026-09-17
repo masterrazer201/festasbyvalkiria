@@ -15,6 +15,10 @@ if(menuButton&&nav){
   });
   nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 }
+document.addEventListener('pointerdown',e=>{
+  if(nav?.classList.contains('open')&&!nav.contains(e.target)&&!menuButton?.contains(e.target)) closeMenu();
+});
+// data-menu-outside-fix
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'&&nav?.classList.contains('open'))closeMenu();
 });
@@ -94,7 +98,9 @@ Detalhes: ${det}`;
       success.hidden=false;
       success.textContent='Abrindo o WhatsApp com seu pedido...';
     }
-    window.location.assign(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`);
+    const url=`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    const opened=window.open(url,'_blank','noopener,noreferrer');
+    if(!opened) window.location.assign(url);
   });
 }
 
@@ -103,23 +109,33 @@ const lb=document.querySelector('.lightbox');
 const lbImg=lb?.querySelector('img');
 const lbCap=lb?.querySelector('figcaption');
 const lbCta=lb?.querySelector('.lightbox-cta');
+let lightboxItems=[];
 let cur=0,last=null;
 
+function visiblePortfolioItems(){
+  return [...document.querySelectorAll('.portfolio-grid .work-card:not(.is-hidden)')];
+}
+function lightboxSetFor(item){
+  if(item?.closest('.portfolio-grid')) return visiblePortfolioItems();
+  return allLightboxItems.filter(el=>!el.closest('.portfolio-grid'));
+}
 function updateLightbox(){
-  const item=allLightboxItems[cur];
+  const item=lightboxItems[cur];
   if(!item||!lbImg||!lbCap)return;
   lbImg.src=item.dataset.image||'';
   lbImg.alt=item.dataset.alt||'';
   lbCap.textContent=item.dataset.alt||'';
+  if(lb) lb.setAttribute('aria-label',item.dataset.alt||'Visualização ampliada');
   if(lbCta){
     const ref=item.dataset.alt||'uma decoração do portfólio';
     const text=`Olá! Vi ${ref} no site da Festas By Valkiria e gostaria de uma festa parecida.`;
     lbCta.href=`https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   }
 }
-function openLB(i){
+function openLB(item){
   if(!lb)return;
-  cur=i;
+  lightboxItems=lightboxSetFor(item);
+  cur=Math.max(0,lightboxItems.indexOf(item));
   last=document.activeElement;
   updateLightbox();
   lb.hidden=false;
@@ -134,12 +150,20 @@ function closeLB(){
   if(last instanceof HTMLElement)last.focus();
 }
 function moveLB(delta){
-  if(!allLightboxItems.length)return;
-  cur=(cur+delta+allLightboxItems.length)%allLightboxItems.length;
+  if(!lightboxItems.length)return;
+  cur=(cur+delta+lightboxItems.length)%lightboxItems.length;
   updateLightbox();
 }
+function trapLightboxFocus(e){
+  if(!lb||lb.hidden||e.key!=='Tab')return;
+  const focusable=[...lb.querySelectorAll('button:not([disabled]),a[href]')].filter(el=>el.offsetParent!==null);
+  if(!focusable.length)return;
+  const first=focusable[0], lastEl=focusable[focusable.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();lastEl.focus();}
+  else if(!e.shiftKey&&document.activeElement===lastEl){e.preventDefault();first.focus();}
+}
 
-allLightboxItems.forEach((item,i)=>item.addEventListener('click',()=>openLB(i)));
+allLightboxItems.forEach(item=>item.addEventListener('click',()=>openLB(item)));
 lb?.querySelector('.lightbox-close')?.addEventListener('click',closeLB);
 lb?.querySelector('.lightbox-prev')?.addEventListener('click',()=>moveLB(-1));
 lb?.querySelector('.lightbox-next')?.addEventListener('click',()=>moveLB(1));
@@ -149,9 +173,8 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape')closeLB();
   if(e.key==='ArrowLeft')moveLB(-1);
   if(e.key==='ArrowRight')moveLB(1);
+  trapLightboxFocus(e);
 });
-
-
 
 // Portfólio V5.7 — filtros + carregamento progressivo
 const portfolioCards=[...document.querySelectorAll('.portfolio-grid .work-card')];
@@ -177,6 +200,11 @@ function renderPortfolio(){
     moreButton.hidden=matched.length<=PORTFOLIO_PAGE;
     moreButton.textContent=portfolioExpanded?'Mostrar menos':'Ver mais trabalhos';
     moreButton.setAttribute('aria-expanded',String(portfolioExpanded));
+  }
+  const status=document.getElementById('portfolio-status');
+  if(status){
+    const shown=visible.length;
+    status.textContent=`${matched.length} trabalhos nesta categoria. ${shown} exibidos.`;
   }
 }
 

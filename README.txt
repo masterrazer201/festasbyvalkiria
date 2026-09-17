@@ -1,26 +1,19 @@
-FESTAS BY VALKIRIA — V5.7.4 AUDITORIA GERAL
+FESTAS BY VALKIRIA — V5.8 POLIMENTO
 
-Revisão técnica completa da V5.7.3.
+Melhorias sem alterar o visual principal:
+- logo reduzida de 1600px para 512px, diminuindo o peso do carregamento;
+- ícones PWA 192px, 512px e Apple Touch Icon;
+- manifest.webmanifest ampliado;
+- lightbox agora respeita o filtro ativo do portfólio;
+- navegação por setas não pula para fotos escondidas por outro filtro;
+- foco preso dentro do lightbox enquanto ele está aberto;
+- menu mobile fecha ao tocar fora;
+- formulário abre WhatsApp em nova guia de forma síncrona, com fallback seguro;
+- campos principais ganharam ligações ARIA com mensagens de erro;
+- contador acessível de resultados nos filtros;
+- páginas legais e 404 não usam mais CSS inline;
+- Content-Security-Policy reforçada: style-src agora é somente 'self';
+- og:site_name adicionado;
+- 54 fotos, filtros, páginas legais e NOINDEX temporário preservados.
 
-Corrigido:
-- preload quebrado que apontava para uma foto antiga;
-- imagem social (Open Graph) atualizada com fotos oficiais atuais;
-- dimensões/type da imagem Open Graph adicionados;
-- campo "Local da festa" agora usa a largura completa;
-- removida a última menção a "quantidade de convidados" do formulário;
-- telefone definido como type=tel;
-- mensagens de erro com aria-live;
-- listener duplicado dos filtros removido;
-- 404 recebeu noindex permanente, favicon e theme-color;
-- security.txt corrigido para um formato válido.
-
-Verificado:
-- 54 trabalhos no portfólio;
-- filtros e "Ver mais trabalhos";
-- lightbox;
-- formulário/WhatsApp;
-- links internos e externos;
-- páginas legais;
-- sitemap/robots/canonical;
-- CSP/hashes;
-- NOINDEX temporário continua ativo enquanto o site está em finalização.
+Quando o site estiver definitivamente aprovado, ainda será necessário remover o NOINDEX.
