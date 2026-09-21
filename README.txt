@@ -1,8 +1,9 @@
-FESTAS BY VALKIRIA — V5.8.5
+FESTAS BY VALKIRIA — V5.8.6 HERO SEO
 
-- Troca somente das 2 fotos menores da área principal (hero).
-- Substituída a foto Safari por Carros.
-- Substituída a foto Cores pastel por Bluey.
-- A foto principal do hero foi mantida.
-- Nenhuma dessas fotos foi adicionada ao portfólio.
-- Restante do site preservado.
+Ajustes nas duas imagens menores do hero:
+- Carros: alt, title e data-alt otimizados;
+- Bluey: alt, title e data-alt otimizados;
+- termos locais incluídos: Joinville e região;
+- descrição natural, sem excesso de palavras-chave;
+- nenhuma das duas imagens foi adicionada ao portfólio;
+- restante do site preservado.
