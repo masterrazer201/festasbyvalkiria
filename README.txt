@@ -1,9 +1,12 @@
-FESTAS BY VALKIRIA — V5.8.6 HERO SEO
+FESTAS BY VALKIRIA — V5.8.7 PATH FIX
 
-Ajustes nas duas imagens menores do hero:
-- Carros: alt, title e data-alt otimizados;
-- Bluey: alt, title e data-alt otimizados;
-- termos locais incluídos: Joinville e região;
-- descrição natural, sem excesso de palavras-chave;
-- nenhuma das duas imagens foi adicionada ao portfólio;
-- restante do site preservado.
+Correção:
+- Carros agora usa cars-hero.webp na raiz;
+- Bluey agora usa bluey-hero.webp na raiz;
+- Como Treinar o Seu Dragão agora usa como-treinar-seu-dragao.webp na raiz.
+
+Motivo:
+os arquivos foram commitados na raiz do GitHub, enquanto o HTML ainda procurava
+por eles em subpastas assets/hero e assets.
+
+Nenhuma foto foi adicionada ao portfólio.
