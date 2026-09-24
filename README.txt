@@ -1,28 +1,25 @@
-FESTAS BY VALKIRIA — V5.8.9 LIGHTHOUSE
+FESTAS BY VALKIRIA — V5.8.10 ACESSIBILIDADE
 
-Melhorias baseadas no relatório Lighthouse:
+Correções finais apontadas pelo segundo Lighthouse:
 
-ACESSIBILIDADE
-- .eyebrow: #d67753 → #b95636;
-- contraste passa do mínimo 4.5:1 em fundos branco e creme;
-- números 01/02/03: #c47a00 → #945600;
-- identidade visual preservada.
+- números 01 / 02 / 03 da seção "Como funciona":
+  #d67753 → #b95636
+  contraste aproximado sobre branco: 4,72:1
 
-IMAGENS RESPONSIVAS
-- srcset e sizes adicionados às fotografias;
-- versões WebP de 480 px e 960 px geradas quando necessário;
-- originais preservadas para telas maiores e lightbox;
-- preload da imagem principal também passou a ser responsivo;
-- 59 elementos receberam srcset;
-- 97 variantes WebP foram geradas;
-- peso total das variantes: 5.95 MB.
+- botão móvel do WhatsApp:
+  fundo verde #25d366 mantido
+  texto #ffffff → #302723
+  contraste aproximado: 7,35:1
 
-NÃO ALTERADO
-- layout;
+Objetivo:
+eliminar os últimos avisos automáticos de contraste sem alterar o layout,
+estrutura ou identidade visual do site.
+
+Não alterado:
+- imagens responsivas da V5.8.9;
 - portfólio;
-- textos;
 - formulário;
-- WhatsApp;
 - páginas legais;
-- service worker;
+- SEO;
+- PWA/service worker;
 - NOINDEX temporário.
