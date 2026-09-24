@@ -1,12 +1,14 @@
-FESTAS BY VALKIRIA — V5.8.7 PATH FIX
+FESTAS BY VALKIRIA — V5.8.8 RODAPÉ
 
-Correção:
-- Carros agora usa cars-hero.webp na raiz;
-- Bluey agora usa bluey-hero.webp na raiz;
-- Como Treinar o Seu Dragão agora usa como-treinar-seu-dragao.webp na raiz.
+Rodapé redesenhado e ampliado:
+- chamada final para orçamento;
+- logo + descrição da empresa;
+- navegação rápida;
+- WhatsApp e Instagram visíveis;
+- área de atendimento;
+- botão para compartilhar o site pelo WhatsApp;
+- links legais;
+- copyright;
+- layout responsivo.
 
-Motivo:
-os arquivos foram commitados na raiz do GitHub, enquanto o HTML ainda procurava
-por eles em subpastas assets/hero e assets.
-
-Nenhuma foto foi adicionada ao portfólio.
+Nenhuma outra área do site foi alterada.
