@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://festasbyvalkiria.com/sitemap.xml
