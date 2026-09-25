@@ -1,0 +1,4 @@
+Contact: https://wa.me/554791084409
+Expires: 2027-09-16T23:59:59Z
+Preferred-Languages: pt-BR
+Canonical: https://festasbyvalkiria.com/.well-known/security.txt

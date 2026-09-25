@@ -1,0 +1,12 @@
+/README.txt /404.html 404!
+/README-NOINDEX-TEMPORARIO.txt /404.html 404!
+/README-SECURITY.txt /404.html 404!
+/ARQUIVOS-ANTIGOS-REMOVIDOS.txt /404.html 404!
+/integrations-template.txt /404.html 404!
+/sitemap-template.xml /404.html 404!
+/.env /404.html 404!
+/.env.* /404.html 404!
+/.git/* /404.html 404!
+/package.json /404.html 404!
+/package-lock.json /404.html 404!
+/wrangler.toml /404.html 404!
