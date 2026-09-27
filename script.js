@@ -28,11 +28,13 @@ const phone='554791084409';
 const telefone=document.getElementById('telefone');
 const dataInput=document.getElementById('data');
 
-if(dataInput){
+function updateMinimumDate(){
+  if(!dataInput)return;
   const now=new Date();
   const yyyy=now.getFullYear(),mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
   dataInput.min=`${yyyy}-${mm}-${dd}`;
 }
+updateMinimumDate();
 
 if(telefone){
   telefone.addEventListener('input',()=>{
@@ -66,11 +68,21 @@ if(form&&telefone&&dataInput){
     e.preventDefault();
     const n=document.getElementById('nome');
     const t=telefone;
-    [n,t].forEach(clearErr);
+    [n,t,dataInput].forEach(clearErr);
+    updateMinimumDate();
     let ok=true;
     if(!n.value.trim()){err(n,'Informe seu nome.');ok=false;}
     if(t.value.replace(/\D/g,'').length<10){err(t,'Informe um WhatsApp válido.');ok=false;}
-    if(!ok)return;
+    if(!dataInput.validity.valid){
+      err(dataInput,dataInput.validity.rangeUnderflow
+        ? 'Escolha hoje ou uma data futura.'
+        : 'Informe uma data válida ou deixe em branco.');
+      ok=false;
+    }
+    if(!ok){
+      [n,t,dataInput].find(input=>input.getAttribute('aria-invalid')==='true')?.focus();
+      return;
+    }
 
     const d=formatDateBR(dataInput.value);
     const tipo=document.getElementById('tipo')?.value||'A definir';
