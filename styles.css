@@ -1061,3 +1061,93 @@ main>section{
     opacity:.047;
   }
 }
+
+/* V6.4.3 — marca d'água com mais presença
+   Reforça a identidade sem transformar a logo no elemento principal. */
+
+main::before{
+  left:-72px;
+  top:500px;
+  width:560px;
+  height:560px;
+  opacity:.060;
+  filter:saturate(.82) contrast(1.02);
+}
+
+main::after{
+  right:-92px;
+  top:46%;
+  width:510px;
+  height:510px;
+  opacity:.050;
+  filter:saturate(.78) contrast(1);
+}
+
+.hero::after{
+  right:-38px;
+  top:-2px;
+  width:340px;
+  height:340px;
+  opacity:.090;
+  filter:saturate(.88) contrast(1.03);
+}
+
+#orcamento::after{
+  right:-24px;
+  bottom:-28px;
+  width:285px;
+  height:285px;
+  opacity:.070;
+  filter:saturate(.82) contrast(1.02);
+}
+
+.site-footer::before{
+  right:-45px;
+  top:10px;
+  width:300px;
+  height:300px;
+  opacity:.095;
+  filter:saturate(.80) brightness(1.28) contrast(1.03);
+}
+
+@media(max-width:760px){
+  main::before{
+    left:-88px;
+    top:720px;
+    width:350px;
+    height:350px;
+    opacity:.040;
+  }
+
+  main::after{
+    right:-90px;
+    top:55%;
+    width:325px;
+    height:325px;
+    opacity:.034;
+  }
+
+  .hero::after{
+    right:-38px;
+    top:8px;
+    width:235px;
+    height:235px;
+    opacity:.065;
+  }
+
+  #orcamento::after{
+    right:-35px;
+    bottom:-20px;
+    width:220px;
+    height:220px;
+    opacity:.050;
+  }
+
+  .site-footer::before{
+    right:-36px;
+    top:18px;
+    width:220px;
+    height:220px;
+    opacity:.070;
+  }
+}
