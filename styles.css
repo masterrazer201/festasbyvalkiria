@@ -679,3 +679,160 @@ body{padding-bottom:68px}.whatsapp-float{bottom:82px}
 @media(max-width:980px){.footer-main{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 44px}}
 @media(max-width:700px){.footer-cta{align-items:flex-start;flex-direction:column;gap:22px}.footer-cta-button{width:100%;justify-content:center}.footer-main{grid-template-columns:1fr;gap:30px}.footer-brand{max-width:420px}.footer-bottom{align-items:flex-start;flex-direction:column;gap:13px}.footer-legal{justify-content:flex-start}}
 @media(max-width:420px){.footer-cta{padding-top:36px;padding-bottom:36px}.footer-main{padding-top:36px;padding-bottom:32px}.footer-brand img{width:68px;height:68px}}
+
+/* V6.4 — identidade visual do background
+   Base clara e sofisticada inspirada na paleta da marca.
+   Mantém fotos e conteúdo como protagonistas. */
+:root{
+  --cream:#f8f4ee;
+  --brand-paper:#fffcf8;
+  --brand-soft:#f3eae1;
+  --brand-peach:#f1d2c3;
+  --brand-gold:#d8b66a;
+  --line:#e8dcd1;
+}
+
+/* Fundo geral: sai do branco puro sem perder leveza. */
+body{
+  background:
+    radial-gradient(circle at 7% 9%,rgba(241,210,195,.28) 0,rgba(241,210,195,0) 28rem),
+    radial-gradient(circle at 96% 38%,rgba(216,182,106,.10) 0,rgba(216,182,106,0) 25rem),
+    var(--cream);
+}
+
+/* Cabeçalho acompanha a nova base quente. */
+.site-header{
+  background:rgba(248,244,238,.93);
+}
+
+/* As seções que antes eram branco puro viram um "papel" quente. */
+.white{
+  background:rgba(255,252,248,.96);
+}
+
+/* Hero: degradê suave + assinatura visual recortada da própria marca. */
+.hero{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 13% 15%,rgba(241,210,195,.38) 0,rgba(241,210,195,0) 31rem),
+    radial-gradient(circle at 88% 8%,rgba(216,182,106,.17) 0,rgba(216,182,106,0) 24rem),
+    linear-gradient(135deg,#fffaf5 0%,#f8f4ee 56%,#f3eae1 100%);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  right:-52px;
+  top:-20px;
+  width:340px;
+  height:218px;
+  background:url("assets/logo.webp") center top/340px 340px no-repeat;
+  opacity:.045;
+  pointer-events:none;
+  z-index:0;
+  filter:saturate(.78);
+}
+.hero>.container{
+  position:relative;
+  z-index:1;
+}
+
+/* Cards continuam claros para criar profundidade sobre o novo fundo. */
+.steps article,
+.possibility-grid article,
+.faq-list details,
+form,
+.button.secondary{
+  background:var(--brand-paper);
+}
+
+/* Área de orçamento ganha uma transição um pouco mais especial. */
+#orcamento{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 8% 18%,rgba(241,210,195,.34) 0,rgba(241,210,195,0) 23rem),
+    radial-gradient(circle at 90% 72%,rgba(216,182,106,.13) 0,rgba(216,182,106,0) 25rem),
+    linear-gradient(135deg,#fbf7f2 0%,#f3eae1 100%);
+}
+#orcamento::after{
+  content:"";
+  position:absolute;
+  right:-42px;
+  bottom:-22px;
+  width:270px;
+  height:174px;
+  background:url("assets/logo.webp") center top/270px 270px no-repeat;
+  opacity:.035;
+  pointer-events:none;
+  z-index:0;
+}
+#orcamento>.container{
+  position:relative;
+  z-index:1;
+}
+
+/* Rodapé: mantém o contraste aprovado, com uma assinatura visual quase imperceptível. */
+.site-footer{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+.site-footer::before{
+  content:"";
+  position:absolute;
+  right:-58px;
+  top:12px;
+  width:300px;
+  height:192px;
+  background:url("assets/logo.webp") center top/300px 300px no-repeat;
+  opacity:.055;
+  pointer-events:none;
+  z-index:0;
+  filter:saturate(.72) brightness(1.16);
+}
+.site-footer>.container{
+  position:relative;
+  z-index:1;
+}
+
+/* Detalhes já existentes passam a conversar com o fundo mais quente. */
+.testimonial-placeholder{
+  background:#fffaf5;
+  border-color:#dfd0c3;
+}
+.field input,
+.field textarea,
+.field select{
+  background:#fffdf9;
+}
+
+/* Mobile: reduz os grafismos para não competir com o conteúdo. */
+@media(max-width:760px){
+  .hero::after{
+    right:-38px;
+    top:2px;
+    width:220px;
+    height:140px;
+    background-size:220px 220px;
+    opacity:.038;
+  }
+  #orcamento::after{
+    right:-34px;
+    bottom:-8px;
+    width:205px;
+    height:132px;
+    background-size:205px 205px;
+    opacity:.03;
+  }
+  .site-footer::before{
+    right:-52px;
+    top:22px;
+    width:220px;
+    height:142px;
+    background-size:220px 220px;
+    opacity:.045;
+  }
+}
