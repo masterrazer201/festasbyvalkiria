@@ -836,3 +836,228 @@ form,
     opacity:.045;
   }
 }
+
+/* V6.4.1 — transição contínua de background
+   Remove os "cortes secos" entre seções e transforma o fundo em
+   uma passagem suave, contínua e elegante ao longo da página. */
+
+main{
+  background:
+    radial-gradient(ellipse at 8% 4%,rgba(241,210,195,.32) 0,rgba(241,210,195,.12) 14rem,rgba(241,210,195,0) 34rem),
+    radial-gradient(ellipse at 92% 27%,rgba(216,182,106,.14) 0,rgba(216,182,106,.05) 16rem,rgba(216,182,106,0) 34rem),
+    radial-gradient(ellipse at 15% 67%,rgba(241,210,195,.20) 0,rgba(241,210,195,.06) 18rem,rgba(241,210,195,0) 38rem),
+    linear-gradient(
+      180deg,
+      #fff9f4 0%,
+      #fbf5ef 12%,
+      #f8f1ea 27%,
+      #f5ece4 42%,
+      #faf5ef 58%,
+      #f7eee7 74%,
+      #f3e7dd 88%,
+      #f9f3ed 100%
+    );
+}
+
+/* As seções deixam de ter blocos sólidos. */
+.section,
+.white{
+  background:transparent;
+}
+
+/* Hero continua especial, mas agora some suavemente no fundo geral. */
+.hero{
+  background:
+    radial-gradient(circle at 13% 16%,rgba(241,210,195,.40) 0,rgba(241,210,195,.18) 16rem,rgba(241,210,195,0) 34rem),
+    radial-gradient(circle at 88% 8%,rgba(216,182,106,.18) 0,rgba(216,182,106,.06) 14rem,rgba(216,182,106,0) 31rem),
+    linear-gradient(
+      180deg,
+      rgba(255,250,245,.90) 0%,
+      rgba(251,245,239,.62) 56%,
+      rgba(248,241,234,0) 100%
+    );
+}
+
+/* Orçamento: destaque suave, sem virar uma "faixa" diferente. */
+#orcamento{
+  background:
+    radial-gradient(circle at 10% 26%,rgba(241,210,195,.28) 0,rgba(241,210,195,.10) 15rem,rgba(241,210,195,0) 32rem),
+    radial-gradient(circle at 89% 70%,rgba(216,182,106,.12) 0,rgba(216,182,106,.04) 16rem,rgba(216,182,106,0) 34rem),
+    linear-gradient(
+      180deg,
+      rgba(250,245,239,0) 0%,
+      rgba(243,234,225,.58) 22%,
+      rgba(243,234,225,.68) 52%,
+      rgba(249,243,237,.34) 82%,
+      rgba(249,243,237,0) 100%
+    );
+}
+
+/* Cabeçalho acompanha a página sem parecer uma barra separada. */
+.site-header{
+  background:rgba(249,245,239,.88);
+  backdrop-filter:blur(16px) saturate(1.05);
+}
+
+/* Cards permanecem claros para o conteúdo continuar bem legível. */
+.steps article,
+.possibility-grid article,
+.faq-list details,
+form,
+.testimonial-placeholder,
+.button.secondary{
+  background:rgba(255,252,248,.96);
+}
+
+/* Mobile: mantém a transição contínua, mas reduz o contraste do degradê. */
+@media(max-width:760px){
+  main{
+    background:
+      radial-gradient(ellipse at 12% 5%,rgba(241,210,195,.24) 0,rgba(241,210,195,0) 25rem),
+      linear-gradient(
+        180deg,
+        #fff9f4 0%,
+        #faf3ed 26%,
+        #f6ece4 52%,
+        #faf4ee 76%,
+        #f5eae1 100%
+      );
+  }
+
+  .hero{
+    background:
+      radial-gradient(circle at 15% 12%,rgba(241,210,195,.32) 0,rgba(241,210,195,0) 24rem),
+      linear-gradient(180deg,rgba(255,250,245,.82) 0%,rgba(248,241,234,0) 100%);
+  }
+
+  #orcamento{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(250,245,239,0) 0%,
+        rgba(243,234,225,.50) 30%,
+        rgba(243,234,225,.56) 68%,
+        rgba(249,243,237,0) 100%
+      );
+  }
+}
+
+/* V6.4.2 — marca d'água da identidade
+   Usa a própria logo como assinatura visual sutil no fundo, sem competir com as fotos. */
+
+main{
+  position:relative;
+  isolation:isolate;
+}
+
+/* Marca d'água principal: grande, lateral e bem suave. */
+main::before{
+  content:"";
+  position:absolute;
+  left:-90px;
+  top:560px;
+  width:520px;
+  height:520px;
+  background:url("assets/logo.webp") center/contain no-repeat;
+  opacity:.028;
+  filter:saturate(.72) contrast(.94);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Segunda marca mais abaixo para dar continuidade visual sem repetição mecânica. */
+main::after{
+  content:"";
+  position:absolute;
+  right:-110px;
+  top:47%;
+  width:480px;
+  height:480px;
+  background:url("assets/logo.webp") center/contain no-repeat;
+  opacity:.022;
+  filter:saturate(.68) contrast(.92);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Conteúdo sempre acima das marcas d'água. */
+main>.section,
+main>section{
+  position:relative;
+  z-index:1;
+}
+
+/* Hero: assinatura menor e mais próxima da composição inicial. */
+.hero::after{
+  right:-55px;
+  top:8px;
+  width:310px;
+  height:310px;
+  background:url("assets/logo.webp") center/contain no-repeat;
+  opacity:.052;
+  filter:saturate(.80);
+}
+
+/* Orçamento: uma assinatura discreta, quase editorial. */
+#orcamento::after{
+  right:-34px;
+  bottom:-34px;
+  width:260px;
+  height:260px;
+  background:url("assets/logo.webp") center/contain no-repeat;
+  opacity:.035;
+}
+
+/* Rodapé mantém o contraste escuro com a marca em transparência. */
+.site-footer::before{
+  right:-62px;
+  top:16px;
+  width:280px;
+  height:280px;
+  background:url("assets/logo.webp") center/contain no-repeat;
+  opacity:.060;
+  filter:saturate(.72) brightness(1.25);
+}
+
+/* Mobile: menos elementos e opacidade ainda menor para não poluir. */
+@media(max-width:760px){
+  main::before{
+    left:-110px;
+    top:760px;
+    width:330px;
+    height:330px;
+    opacity:.020;
+  }
+
+  main::after{
+    right:-115px;
+    top:56%;
+    width:310px;
+    height:310px;
+    opacity:.018;
+  }
+
+  .hero::after{
+    right:-54px;
+    top:18px;
+    width:220px;
+    height:220px;
+    opacity:.038;
+  }
+
+  #orcamento::after{
+    right:-52px;
+    bottom:-30px;
+    width:205px;
+    height:205px;
+    opacity:.027;
+  }
+
+  .site-footer::before{
+    right:-58px;
+    top:24px;
+    width:205px;
+    height:205px;
+    opacity:.047;
+  }
+}
