@@ -28,13 +28,11 @@ const phone='554791084409';
 const telefone=document.getElementById('telefone');
 const dataInput=document.getElementById('data');
 
-function updateMinimumDate(){
-  if(!dataInput)return;
+if(dataInput){
   const now=new Date();
   const yyyy=now.getFullYear(),mm=String(now.getMonth()+1).padStart(2,'0'),dd=String(now.getDate()).padStart(2,'0');
   dataInput.min=`${yyyy}-${mm}-${dd}`;
 }
-updateMinimumDate();
 
 if(telefone){
   telefone.addEventListener('input',()=>{
@@ -68,21 +66,11 @@ if(form&&telefone&&dataInput){
     e.preventDefault();
     const n=document.getElementById('nome');
     const t=telefone;
-    [n,t,dataInput].forEach(clearErr);
-    updateMinimumDate();
+    [n,t].forEach(clearErr);
     let ok=true;
     if(!n.value.trim()){err(n,'Informe seu nome.');ok=false;}
     if(t.value.replace(/\D/g,'').length<10){err(t,'Informe um WhatsApp válido.');ok=false;}
-    if(!dataInput.validity.valid){
-      err(dataInput,dataInput.validity.rangeUnderflow
-        ? 'Escolha hoje ou uma data futura.'
-        : 'Informe uma data válida ou deixe em branco.');
-      ok=false;
-    }
-    if(!ok){
-      [n,t,dataInput].find(input=>input.getAttribute('aria-invalid')==='true')?.focus();
-      return;
-    }
+    if(!ok)return;
 
     const d=formatDateBR(dataInput.value);
     const tipo=document.getElementById('tipo')?.value||'A definir';
@@ -243,3 +231,99 @@ moreButton?.addEventListener('click',()=>{
 });
 
 renderPortfolio();
+
+// V6.4.5 — marcas d'água elegantes, discretas e com variação por carregamento
+(function(){
+  const main=document.querySelector('main');
+  const footer=document.querySelector('.site-footer');
+  if(!main&&!footer)return;
+
+  const isHome=/\/($|index\.html$)/.test(window.location.pathname||'/');
+  const isMobile=window.matchMedia('(max-width:760px)').matches;
+
+  const mainPacksDesktop=[
+    [
+      {x:.79,y:.12,size:390,opacity:.038,rotate:-4},
+      {x:.22,y:.67,size:430,opacity:.030,rotate:4}
+    ],
+    [
+      {x:.73,y:.18,size:410,opacity:.036,rotate:-3},
+      {x:.19,y:.58,size:450,opacity:.028,rotate:5}
+    ],
+    [
+      {x:.81,y:.22,size:370,opacity:.040,rotate:-5},
+      {x:.28,y:.74,size:420,opacity:.030,rotate:3}
+    ]
+  ];
+
+  const mainPacksMobile=[
+    [
+      {x:.72,y:.18,size:205,opacity:.030,rotate:-3},
+      {x:.24,y:.70,size:230,opacity:.022,rotate:4}
+    ],
+    [
+      {x:.76,y:.14,size:215,opacity:.032,rotate:-4},
+      {x:.27,y:.62,size:225,opacity:.021,rotate:3}
+    ]
+  ];
+
+  const footerPacksDesktop=[
+    {x:.80,y:.36,size:285,opacity:.078,rotate:-4},
+    {x:.76,y:.43,size:300,opacity:.074,rotate:-5},
+    {x:.82,y:.32,size:275,opacity:.080,rotate:-3}
+  ];
+
+  const footerPacksMobile=[
+    {x:.74,y:.30,size:185,opacity:.055,rotate:-4},
+    {x:.70,y:.37,size:195,opacity:.052,rotate:-3},
+    {x:.76,y:.28,size:180,opacity:.057,rotate:-5}
+  ];
+
+  const pick=(arr)=>arr[Math.floor(Math.random()*arr.length)];
+  const marks=[];
+
+  function createMark(host,conf,extraClass=''){
+    const el=document.createElement('span');
+    el.className=`decor-watermark${extraClass?` ${extraClass}`:''}`;
+    el.setAttribute('aria-hidden','true');
+    el.style.setProperty('--wm-opacity',String(conf.opacity));
+    el.style.setProperty('--wm-rotate',`${conf.rotate}deg`);
+    host.appendChild(el);
+    marks.push({el,host,conf});
+  }
+
+  if(isHome&&main){
+    const mainPack=pick(isMobile?mainPacksMobile:mainPacksDesktop);
+    mainPack.forEach(conf=>createMark(main,conf,'is-main'));
+  }
+
+  if(footer){
+    createMark(footer,pick(isMobile?footerPacksMobile:footerPacksDesktop),'is-footer');
+  }
+
+  function placeMark(item){
+    const {el,host,conf}=item;
+    const hostW=host.clientWidth;
+    const hostH=host.clientHeight;
+    const size=conf.size;
+    const gutter=isMobile?18:32;
+    const left=Math.max(gutter,Math.min(hostW-size-gutter,hostW*conf.x-size/2));
+    const top=Math.max(gutter,Math.min(hostH-size-gutter,hostH*conf.y-size/2));
+    el.style.left=`${left}px`;
+    el.style.top=`${top}px`;
+    el.style.width=`${size}px`;
+    el.style.height=`${size}px`;
+  }
+
+  function layoutMarks(){
+    marks.forEach(placeMark);
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize',()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(layoutMarks,120);
+  });
+
+  layoutMarks();
+})();

@@ -1151,3 +1151,83 @@ main::after{
     opacity:.070;
   }
 }
+
+/* V6.4.4 — marcas d'água internas e com variação
+   Corrige corte lateral no extremo direito e troca pseudo-elementos fixos
+   por marcas posicionadas dentro da área visível, com variações a cada carregamento. */
+
+main::before,
+main::after,
+.hero::after,
+#orcamento::after,
+.site-footer::before{
+  content:none !important;
+  background:none !important;
+}
+
+main,
+.site-footer{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+main > .decor-watermark,
+.site-footer > .decor-watermark{
+  position:absolute;
+  display:block;
+  background:url("assets/logo.webp") center/contain no-repeat;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;
+  opacity:var(--wm-opacity,.06);
+  transform:rotate(var(--wm-rotate,0deg)) scale(var(--wm-scale,1));
+  transform-origin:center;
+  filter:saturate(.84) contrast(1.02);
+  will-change:transform,opacity,left,top;
+}
+
+.site-footer > .decor-watermark{
+  filter:saturate(.82) brightness(1.22) contrast(1.03);
+}
+
+main>.section,
+main>section,
+.site-footer>.container{
+  position:relative;
+  z-index:1;
+}
+
+@media(max-width:760px){
+  main > .decor-watermark,
+  .site-footer > .decor-watermark{
+    filter:saturate(.80) contrast(1.01);
+  }
+
+  .site-footer > .decor-watermark{
+    filter:saturate(.78) brightness(1.18) contrast(1.02);
+  }
+}
+
+/* V6.4.5 — acabamento elegante das marcas d'água */
+main > .decor-watermark{
+  filter:saturate(.68) contrast(.96) brightness(1.04);
+}
+
+.site-footer > .decor-watermark{
+  filter:saturate(.70) brightness(1.18) contrast(.98);
+}
+
+.decor-watermark{
+  transition:opacity .25s ease, transform .25s ease;
+}
+
+@media(max-width:760px){
+  main > .decor-watermark{
+    filter:saturate(.64) contrast(.95) brightness(1.05);
+  }
+
+  .site-footer > .decor-watermark{
+    filter:saturate(.68) brightness(1.16) contrast(.97);
+  }
+}
