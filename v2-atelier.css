@@ -514,3 +514,35 @@ a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}b
 @media(prefers-reduced-motion:reduce){.autoplay-track-fill{animation:none!important}}
 
 .footer-legal-links{display:inline-flex;flex-wrap:wrap;gap:9px;align-items:center}.footer-legal-links a{text-decoration:none;color:inherit}.footer-legal-links a:hover{text-decoration:underline}
+
+
+/* V2.7.1 — Foto vertical do bloco Nosso olhar: exibir a decoração completa. */
+.feature-photo {
+  isolation: isolate;
+  background: #5d4b3f;
+}
+.feature-photo::before {
+  content: "";
+  position: absolute;
+  inset: -25px;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(45,32,26,.18),rgba(45,32,26,.18)),
+    url("assets/portfolio/dinossauros.webp") center / cover no-repeat;
+  filter: blur(19px);
+  transform: scale(1.04);
+}
+.feature-photo > img {
+  z-index: 1;
+  object-fit: contain;
+  object-position: center;
+}
+/* Mantém o 3D do bloco, mas evita recortar a foto com zoom/parallax. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  body.v26-motion-active .feature-photo > img {
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
