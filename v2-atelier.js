@@ -431,22 +431,31 @@ if('IntersectionObserver' in window && nav){
       const anchor=el.closest('section')||el;
       const rect=anchor.getBoundingClientRect();
       if(rect.bottom < -260||rect.top > vh+260)continue;
-      const t=clamp((rect.top-vh*.52)/(vh*.76),-1,1);
+      // Face frontal na região central da tela, leve perspectiva ao entrar e sair.
+      const center=rect.top+rect.height*.5;
+      const t=clamp((center-vh*.5)/(vh*.72+rect.height*.25),-1,1);
       const a=Math.abs(t);
       const side=Number(el.dataset.v26Side||1);
-      const factor=el.dataset.v26Scene==='text'?.46:el.dataset.v26Scene==='form'?.68:1;
-      el.style.setProperty('--v26-rx',`${(t*10*factor).toFixed(2)}deg`);
-      el.style.setProperty('--v26-ry',`${(t*5*side*factor).toFixed(2)}deg`);
-      el.style.setProperty('--v26-z',`${(-a*112*factor).toFixed(1)}px`);
-      el.style.setProperty('--v26-y',`${(t*23*factor).toFixed(1)}px`);
-      el.style.setProperty('--v26-scale',(1-a*.045*factor).toFixed(4));
-      // Camadas internas percorrem distâncias diferentes: parallax real, mas limitado.
+      const type=el.dataset.v26Scene;
+      const factor=type==='text'?.36:type==='form'?.52:type==='hero'?.8:1;
+      el.style.setProperty('--v26-rx',`${(t*12*factor).toFixed(2)}deg`);
+      el.style.setProperty('--v26-ry',`${(t*6*side*factor).toFixed(2)}deg`);
+      el.style.setProperty('--v26-z',`${(-a*135*factor).toFixed(1)}px`);
+      el.style.setProperty('--v26-y',`${(t*29*factor).toFixed(1)}px`);
+      el.style.setProperty('--v26-scale',(1-a*.055*factor).toFixed(4));
+      // Profundidade individual de imagens e reflexos, sem ampliar fotos.
+      el.style.setProperty('--v28-light-x',`${(50-t*23*side).toFixed(1)}%`);
+      el.style.setProperty('--v28-depth-shadow',(.14+(1-a)*.12).toFixed(3));
+      el.style.setProperty('--v28-inner-rotate',`${(-t*2*side).toFixed(2)}deg`);
       if(el.classList.contains('essencia-photos')){
-        el.style.setProperty('--v26-parallax',`${(-t*17).toFixed(1)}px`);
-        el.style.setProperty('--v26-parallax-small',`${(t*26).toFixed(1)}px`);
+        el.style.setProperty('--v26-parallax',`${(-t*24).toFixed(1)}px`);
+        el.style.setProperty('--v26-parallax-small',`${(t*34).toFixed(1)}px`);
       }
       if(el.classList.contains('feature-photo')){
-        el.style.setProperty('--v26-photo-y',`${(-t*16).toFixed(1)}px`);
+        el.style.setProperty('--v28-backdrop-y',`${(-t*12).toFixed(1)}px`);
+      }
+      if(type==='text'){
+        el.style.setProperty('--v28-butterfly-y',`${(t*13).toFixed(1)}px`);
       }
     }
   }
@@ -493,4 +502,47 @@ if('IntersectionObserver' in window && nav){
   window.addEventListener('resize',requestScenes,{passive:true});
   if(typeof desktop.addEventListener==='function')desktop.addEventListener('change',enable);
   enable();
+})();
+
+
+// V2.8 — Luz e inclinação 3D sob o ponteiro no portfólio (somente desktop).
+// Um listener para todos os cartões, inclusive após filtragem.
+(function(){
+  const grid=document.getElementById('gallery-grid');
+  if(!grid)return;
+  const fine=window.matchMedia('(min-width:1024px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
+  let current=null,frame=0;
+  function reset(card){
+    if(!card)return;
+    for(const key of ['--v28-card-rx','--v28-card-ry','--v28-card-x','--v28-card-y'])card.style.removeProperty(key);
+  }
+  grid.addEventListener('pointermove',event=>{
+    if(!fine.matches)return;
+    const card=event.target.closest('.gallery-card');
+    if(!card||!grid.contains(card))return;
+    if(card!==current){reset(current);current=card}
+    const rect=card.getBoundingClientRect();
+    if(!rect.width||!rect.height)return;
+    const x=Math.max(-1,Math.min(1,(event.clientX-rect.left)/rect.width*2-1));
+    const y=Math.max(-1,Math.min(1,(event.clientY-rect.top)/rect.height*2-1));
+    if(frame)cancelAnimationFrame(frame);
+    frame=requestAnimationFrame(()=>{
+      card.style.setProperty('--v28-card-rx',(-y*4.5).toFixed(2)+'deg');
+      card.style.setProperty('--v28-card-ry',(x*5.5).toFixed(2)+'deg');
+      card.style.setProperty('--v28-card-x',((x+1)*50).toFixed(1)+'%');
+      card.style.setProperty('--v28-card-y',((y+1)*50).toFixed(1)+'%');
+      frame=0;
+    });
+  },{passive:true});
+  grid.addEventListener('pointerout',event=>{
+    const card=event.target.closest('.gallery-card');
+    if(!card||(event.relatedTarget&&card.contains(event.relatedTarget)))return;
+    if(frame){cancelAnimationFrame(frame);frame=0}
+    reset(card);
+    if(current===card)current=null;
+  });
+  if(typeof fine.addEventListener==='function')fine.addEventListener('change',()=>{
+    if(frame){cancelAnimationFrame(frame);frame=0}
+    reset(current);current=null;
+  });
 })();
